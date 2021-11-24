@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SwiftBI",
+        "repositoryURL": "https://github.com/Wittenstam/SwiftBI",
+        "state": {
+          "branch": "main",
+          "revision": "4bbbbb20ca564462315f1ba0d546309d189fc7d9",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
