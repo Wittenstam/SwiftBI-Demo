@@ -10,7 +10,11 @@ import SwiftBI
 
 struct MultiLineChartDemo: View {
     
-    let multiLineChartDataSet = [
+    @State var title: String = "Monthly Sales"
+    @State var legend: String = "Month"
+    @State var dataUnit: String =  "SEK"
+    @State var maxValue: Double = 0
+    @State var data = [
          LineChartDataLine(label: "2019", color: Color.green, isFilled: true, isCurved: true, value:
              [
                  LineChartData(label: "January", value: 340.32),
@@ -47,7 +51,7 @@ struct MultiLineChartDemo: View {
      ]
       
      var body: some View {
-         LineChart(title: "Montly Sales", legend: "Month", dataUnit: "SEK", maxValue: 0, data: multiLineChartDataSet)
+         LineChart(title: $title, legend: $legend, dataUnit: $dataUnit, maxValue: $maxValue, data: $data)
              .frame(height: 400)
      }
 

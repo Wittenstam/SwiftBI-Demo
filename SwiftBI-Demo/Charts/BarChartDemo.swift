@@ -10,7 +10,12 @@ import SwiftBI
 
 struct BarChartDemo: View {
     
-    let barChartDataSet = [
+    @State var title: String = "Monthly Sales"
+    @State var legend: String =  "Month"
+    @State var dataUnit: String = "SEK"
+    @State var barColor: Color = .blue
+    @State var maxValue: Double = 0
+    @State var data = [
          BarChartData(label: "January", value: 340.32),
          BarChartData(label: "February", value: 250.0),
          BarChartData(label: "March", value: 430.22),
@@ -26,7 +31,7 @@ struct BarChartDemo: View {
      ]
      
     var body: some View {
-        BarChart(title: "Monthly Sales", legend: "Month", dataUnit: "SEK", barColor: .blue, maxValue: 0, data: barChartDataSet)
+        BarChart(title: $title, legend: $legend, dataUnit: $dataUnit, barColor: $barColor, maxValue: $maxValue, data: $data)
             .frame(height: 500)
     }
 

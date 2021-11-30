@@ -10,7 +10,12 @@ import SwiftBI
 
 struct RadarChartDemo: View {
     
-    let radarChartDataSet = [
+    @State var title: String = "Monthly Sales"
+    @State var gridColor: Color = .gray
+    @State var dataColor: Color = .purple
+    @State var dataUnit: String = "SEK"
+    @State var legend: String =  "Month"
+    @State var data = [
         RadarChartData(label: "January", value: 340.32),
         RadarChartData(label: "February", value: 250.0),
         RadarChartData(label: "March", value: 430.22),
@@ -19,9 +24,11 @@ struct RadarChartDemo: View {
         RadarChartData(label: "June", value: 380.0),
         RadarChartData(label: "July", value: 365.98)
      ]
+    @State var maxValue: Double = 0
+    @State var divisions: Int = 10
      
     var body: some View {
-        RadarChart(title: "Monthly Sales", gridColor: Color.gray, dataColor: Color.purple, dataUnit: "SEK", legend: "Month", data: radarChartDataSet, maxValue: 0, divisions: 10)
+        RadarChart(title: $title, gridColor: $gridColor, dataColor: $dataColor, dataUnit: $dataUnit, legend: $legend, data: $data, maxValue: $maxValue, divisions: $divisions)
           .frame(height: 400)
     }
 

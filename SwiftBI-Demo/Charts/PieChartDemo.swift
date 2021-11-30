@@ -10,7 +10,9 @@ import SwiftBI
 
 struct PieChartDemo: View {
     
-    let pieChartDataSet = [
+    @State var title: String = "Monthly Sales"
+    @State var dataUnit: String =  "SEK"
+    @State var data = [
         PieChartData(label: "January", value: 150.32),
         PieChartData(label: "February", value: 202.32),
         PieChartData(label: "March", value: 390.22),
@@ -21,7 +23,7 @@ struct PieChartDemo: View {
     ]
      
     var body: some View {
-        PieChart(title: "Montly Sales", dataUnit: "SEK", data: pieChartDataSet)
+        PieChart(title: $title, dataUnit: $dataUnit, data: $data)
             .frame(height: 500)
     }
 
