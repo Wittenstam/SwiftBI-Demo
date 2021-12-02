@@ -14,7 +14,7 @@ struct MultiLineChartDemo: View {
     @State var legend: String = "Month"
     @State var dataUnit: String =  "SEK"
     @State var maxValue: Double = 0
-    @State var data = [
+    @State var data : [LineChartDataLine] = [
          LineChartDataLine(label: "2019", color: Color.green, isFilled: true, isCurved: true, value:
              [
                  LineChartData(label: "January", value: 340.32),
@@ -51,8 +51,41 @@ struct MultiLineChartDemo: View {
      ]
       
      var body: some View {
-         LineChart(title: $title, legend: $legend, dataUnit: $dataUnit, maxValue: $maxValue, data: $data)
-             .frame(height: 400)
+         VStack{
+             LineChart(title: $title, legend: $legend, dataUnit: $dataUnit, maxValue: $maxValue, data: $data)
+                 .frame(height: 400)
+             
+             Button(action: {
+                 
+                 self.data.removeAll()
+                 var lineChartDataset1 = [LineChartData]()
+                 var lineChartDataset2 = [LineChartData]()
+                 var lineChartDataset3 = [LineChartData]()
+                 
+                 for i in 1...Int.random(in: 5..<20) {
+                     let lineData1 = LineChartData(label: "random date \(i)", value: Double.random(in: 1..<100))
+                     lineChartDataset1.append(lineData1)
+                     
+                     let lineData2 = LineChartData(label: "random date \(i)", value: Double.random(in: 1..<100))
+                     lineChartDataset2.append(lineData2)
+                     
+                     let lineData3 = LineChartData(label: "random date \(i)", value: Double.random(in: 1..<100))
+                     lineChartDataset3.append(lineData3)
+                 }
+
+                 let LineChartDataLine1 = LineChartDataLine(label: "Random 1", color: Color.red, isFilled: false, isCurved: true, value:lineChartDataset1)
+                 let LineChartDataLine2 = LineChartDataLine(label: "Random 2", color: Color.green, isFilled: false, isCurved: true, value:lineChartDataset2)
+                 let LineChartDataLine3 = LineChartDataLine(label: "Random 3", color: Color.blue, isFilled: false, isCurved: true, value:lineChartDataset3)
+
+                 self.data.append(LineChartDataLine1)
+                 self.data.append(LineChartDataLine2)
+                 self.data.append(LineChartDataLine3)
+
+             }) {
+                 Text("Generate data")
+             }
+         }
+         
      }
 
 }

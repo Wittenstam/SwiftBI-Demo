@@ -12,7 +12,7 @@ struct PieChartDemo: View {
     
     @State var title: String = "Monthly Sales"
     @State var dataUnit: String =  "SEK"
-    @State var data = [
+    @State var data : [PieChartData] = [
         PieChartData(label: "January", value: 150.32),
         PieChartData(label: "February", value: 202.32),
         PieChartData(label: "March", value: 390.22),
@@ -23,8 +23,23 @@ struct PieChartDemo: View {
     ]
      
     var body: some View {
-        PieChart(title: $title, dataUnit: $dataUnit, data: $data)
-            .frame(height: 500)
+        VStack{
+            PieChart(title: $title, dataUnit: $dataUnit, data: $data)
+                .frame(height: 500)
+            
+            Button(action: {
+                
+                var pieChartDataset = [PieChartData]()
+                for i in 1...Int.random(in: 3..<7) {
+                    let pieData = PieChartData(label: "random date \(i)", value: Double.random(in: 1..<100))
+                    pieChartDataset.append(pieData)
+                }
+                self.data = pieChartDataset
+
+            }) {
+                Text("Generate data")
+            }
+        }
     }
 
 }

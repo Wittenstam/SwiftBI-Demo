@@ -87,7 +87,6 @@
 			isa = PBXGroup;
 			children = (
 				154CF1F4274ED21C000E39B9 /* SwiftBI-Demo */,
-				154CF205274ED224000E39B9 /* SwiftBI-DemoTests */,
 				154CF20F274ED224000E39B9 /* SwiftBI-DemoUITests */,
 				154CF1F3274ED21C000E39B9 /* Products */,
 			);
@@ -134,6 +133,7 @@
 		154CF20F274ED224000E39B9 /* SwiftBI-DemoUITests */ = {
 			isa = PBXGroup;
 			children = (
+				154CF205274ED224000E39B9 /* SwiftBI-DemoTests */,
 				154CF210274ED224000E39B9 /* SwiftBI_DemoUITests.swift */,
 				154CF212274ED224000E39B9 /* SwiftBI_DemoUITestsLaunchTests.swift */,
 			);

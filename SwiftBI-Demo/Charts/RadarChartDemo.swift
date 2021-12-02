@@ -15,7 +15,7 @@ struct RadarChartDemo: View {
     @State var dataColor: Color = .purple
     @State var dataUnit: String = "SEK"
     @State var legend: String =  "Month"
-    @State var data = [
+    @State var data : [RadarChartData] = [
         RadarChartData(label: "January", value: 340.32),
         RadarChartData(label: "February", value: 250.0),
         RadarChartData(label: "March", value: 430.22),
@@ -28,8 +28,24 @@ struct RadarChartDemo: View {
     @State var divisions: Int = 10
      
     var body: some View {
-        RadarChart(title: $title, gridColor: $gridColor, dataColor: $dataColor, dataUnit: $dataUnit, legend: $legend, data: $data, maxValue: $maxValue, divisions: $divisions)
-          .frame(height: 400)
+        VStack{
+            RadarChart(title: $title, gridColor: $gridColor, dataColor: $dataColor, dataUnit: $dataUnit, legend: $legend, data: $data, maxValue: $maxValue, divisions: $divisions)
+                .frame(height: 400)
+            
+            Button(action: {
+                
+                var radarChartDataset = [RadarChartData]()
+                for i in 1...Int.random(in: 3..<7) {
+                    let radarData = RadarChartData(label: "random date \(i)", value: Double.random(in: 1..<100))
+                    radarChartDataset.append(radarData)
+                }
+                self.data = radarChartDataset
+
+            }) {
+                Text("Generate data")
+            }
+            
+        }
     }
 
 }
