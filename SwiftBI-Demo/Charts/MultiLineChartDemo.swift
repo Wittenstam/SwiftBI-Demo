@@ -51,41 +51,56 @@ struct MultiLineChartDemo: View {
      ]
       
      var body: some View {
-         VStack{
-             LineChart(title: $title, legend: $legend, dataUnit: $dataUnit, maxValue: $maxValue, data: $data)
-                 .frame(height: 400)
-             
-             Button(action: {
-                 
-                 self.data.removeAll()
-                 var lineChartDataset1 = [LineChartData]()
-                 var lineChartDataset2 = [LineChartData]()
-                 var lineChartDataset3 = [LineChartData]()
-                 
-                 for i in 1...Int.random(in: 5..<20) {
-                     let lineData1 = LineChartData(label: "random date \(i)", value: Double.random(in: 1..<100))
-                     lineChartDataset1.append(lineData1)
+         GeometryReader { geometry in
+             ScrollView{
+                 VStack(alignment: .center) {
                      
-                     let lineData2 = LineChartData(label: "random date \(i)", value: Double.random(in: 1..<100))
-                     lineChartDataset2.append(lineData2)
+                     ZStack(alignment: .center) {
+                         Color(UIColor.systemBackground)
+                             .cornerRadius(8)
+                         VStack (alignment: .center) {
+                             LineChart(title: $title, legend: $legend, dataUnit: $dataUnit, maxValue: $maxValue, data: $data)
+                                 //.frame(height: 400)
+                                 .shadow(color: Color(uiColor: .clear).opacity(0.3), radius: 5, x: 0, y: 0)
+                         }
+
+                     }
+                     .frame(width: geometry.size.width * 0.8, height: 400)
+                     .shadow(color: Color(uiColor: .label).opacity(0.3), radius: 5, x: 0, y: 0)
                      
-                     let lineData3 = LineChartData(label: "random date \(i)", value: Double.random(in: 1..<100))
-                     lineChartDataset3.append(lineData3)
+                     Button(action: {
+                         
+                         self.data.removeAll()
+                         var lineChartDataset1 = [LineChartData]()
+                         var lineChartDataset2 = [LineChartData]()
+                         var lineChartDataset3 = [LineChartData]()
+                         
+                         for i in 1...Int.random(in: 5..<20) {
+                             let lineData1 = LineChartData(label: "random date \(i)", value: Double.random(in: 1..<100))
+                             lineChartDataset1.append(lineData1)
+                             
+                             let lineData2 = LineChartData(label: "random date \(i)", value: Double.random(in: 1..<100))
+                             lineChartDataset2.append(lineData2)
+                             
+                             let lineData3 = LineChartData(label: "random date \(i)", value: Double.random(in: 1..<100))
+                             lineChartDataset3.append(lineData3)
+                         }
+
+                         let LineChartDataLine1 = LineChartDataLine(label: "Random 1", color: Color.red, isFilled: false, isCurved: true, value:lineChartDataset1)
+                         let LineChartDataLine2 = LineChartDataLine(label: "Random 2", color: Color.green, isFilled: false, isCurved: true, value:lineChartDataset2)
+                         let LineChartDataLine3 = LineChartDataLine(label: "Random 3", color: Color.blue, isFilled: false, isCurved: true, value:lineChartDataset3)
+
+                         self.data.append(LineChartDataLine1)
+                         self.data.append(LineChartDataLine2)
+                         self.data.append(LineChartDataLine3)
+
+                     }) {
+                         Text("Generate data")
+                     }
                  }
-
-                 let LineChartDataLine1 = LineChartDataLine(label: "Random 1", color: Color.red, isFilled: false, isCurved: true, value:lineChartDataset1)
-                 let LineChartDataLine2 = LineChartDataLine(label: "Random 2", color: Color.green, isFilled: false, isCurved: true, value:lineChartDataset2)
-                 let LineChartDataLine3 = LineChartDataLine(label: "Random 3", color: Color.blue, isFilled: false, isCurved: true, value:lineChartDataset3)
-
-                 self.data.append(LineChartDataLine1)
-                 self.data.append(LineChartDataLine2)
-                 self.data.append(LineChartDataLine3)
-
-             }) {
-                 Text("Generate data")
+                 .frame(width: geometry.size.width)
              }
          }
-         
      }
 
 }

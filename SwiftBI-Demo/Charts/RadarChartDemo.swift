@@ -28,23 +28,38 @@ struct RadarChartDemo: View {
     @State var divisions: Int = 10
      
     var body: some View {
-        VStack{
-            RadarChart(title: $title, gridColor: $gridColor, dataColor: $dataColor, dataUnit: $dataUnit, legend: $legend, data: $data, maxValue: $maxValue, divisions: $divisions)
-                .frame(height: 400)
-            
-            Button(action: {
-                
-                var radarChartDataset = [RadarChartData]()
-                for i in 1...Int.random(in: 3..<7) {
-                    let radarData = RadarChartData(label: "random date \(i)", value: Double.random(in: 1..<100))
-                    radarChartDataset.append(radarData)
-                }
-                self.data = radarChartDataset
+        GeometryReader { geometry in
+            ScrollView{
+                VStack(alignment: .center) {
+                    
+                    ZStack(alignment: .center) {
+                        Color(UIColor.systemBackground)
+                            .cornerRadius(8)
+                        VStack (alignment: .center) {
+                            RadarChart(title: $title, gridColor: $gridColor, dataColor: $dataColor, dataUnit: $dataUnit, legend: $legend, data: $data, maxValue: $maxValue, divisions: $divisions)
+                                //.frame(height: 400)
+                                .shadow(color: Color(uiColor: .clear).opacity(0.3), radius: 5, x: 0, y: 0)
+                        }
 
-            }) {
-                Text("Generate data")
+                    }
+                    .frame(width: geometry.size.width * 0.8, height: 400)
+                    .shadow(color: Color(uiColor: .label).opacity(0.3), radius: 5, x: 0, y: 0)
+                    
+                    Button(action: {
+                        
+                        var radarChartDataset = [RadarChartData]()
+                        for i in 1...Int.random(in: 3..<7) {
+                            let radarData = RadarChartData(label: "random date \(i)", value: Double.random(in: 1..<100))
+                            radarChartDataset.append(radarData)
+                        }
+                        self.data = radarChartDataset
+
+                    }) {
+                        Text("Generate data")
+                    }
+                }
+                .frame(width: geometry.size.width)
             }
-            
         }
     }
 

@@ -23,22 +23,39 @@ struct PieChartDemo: View {
     ]
      
     var body: some View {
-        VStack{
-            PieChart(title: $title, dataUnit: $dataUnit, data: $data)
-                .frame(height: 500)
-            
-            Button(action: {
-                
-                var pieChartDataset = [PieChartData]()
-                for i in 1...Int.random(in: 3..<7) {
-                    let pieData = PieChartData(label: "random date \(i)", value: Double.random(in: 1..<100))
-                    pieChartDataset.append(pieData)
-                }
-                self.data = pieChartDataset
+        GeometryReader { geometry in
+            ScrollView{
+                VStack(alignment: .center) {
+                    
+                    ZStack(alignment: .center) {
+                        Color(UIColor.systemBackground)
+                            .cornerRadius(8)
+                        VStack (alignment: .center) {
+                            PieChart(title: $title, dataUnit: $dataUnit, data: $data)
+                                //.frame(height: 500)
+                                .shadow(color: Color(uiColor: .clear).opacity(0.3), radius: 5, x: 0, y: 0)
+                        }
 
-            }) {
-                Text("Generate data")
+                    }
+                    .frame(width: geometry.size.width * 0.8, height: 400)
+                    .shadow(color: Color(uiColor: .label).opacity(0.3), radius: 5, x: 0, y: 0)
+                    
+                    Button(action: {
+                        
+                        var pieChartDataset = [PieChartData]()
+                        for i in 1...Int.random(in: 3..<7) {
+                            let pieData = PieChartData(label: "random date \(i)", value: Double.random(in: 1..<100))
+                            pieChartDataset.append(pieData)
+                        }
+                        self.data = pieChartDataset
+
+                    }) {
+                        Text("Generate data")
+                    }
+                }
+                .frame(width: geometry.size.width)
             }
+            
         }
     }
 

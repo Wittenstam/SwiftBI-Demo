@@ -31,23 +31,38 @@ struct BarChartDemo: View {
      ]
      
     var body: some View {
-        VStack{
-            BarChart(title: $title, legend: $legend, dataUnit: $dataUnit, barColor: $barColor, maxValue: $maxValue, data: $data)
-                .frame(height: 500)
-            
-            Button(action: {
-                
-                var barChartDataset = [BarChartData]()
-                for i in 1...Int.random(in: 5..<20) {
-                    let barData = BarChartData(label: "random date \(i)", value: Double.random(in: 1..<100))
-                    barChartDataset.append(barData)
-                }
-                self.data = barChartDataset
+        GeometryReader { geometry in
+            ScrollView{
+                VStack(alignment: .center) {
 
-            }) {
-                Text("Generate data")
+                    ZStack(alignment: .center) {
+                        Color(UIColor.systemBackground)
+                            .cornerRadius(8)
+                        VStack (alignment: .center) {
+                            BarChart(title: $title, legend: $legend, dataUnit: $dataUnit, barColor: $barColor, maxValue: $maxValue, data: $data)
+                                //.frame(height: 500)
+                                .shadow(color: Color(uiColor: .clear).opacity(0.3), radius: 5, x: 0, y: 0)
+                        }
+
+                    }
+                    .frame(width: geometry.size.width * 0.8, height: 400)
+                    .shadow(color: Color(uiColor: .label).opacity(0.3), radius: 5, x: 0, y: 0)
+                    
+                    Button(action: {
+                        
+                        var barChartDataset = [BarChartData]()
+                        for i in 1...Int.random(in: 5..<20) {
+                            let barData = BarChartData(label: "random date \(i)", value: Double.random(in: 1..<100))
+                            barChartDataset.append(barData)
+                        }
+                        self.data = barChartDataset
+
+                    }) {
+                        Text("Generate data")
+                    }
+                }
+                .frame(width: geometry.size.width)
             }
-            
         }
     }
 
