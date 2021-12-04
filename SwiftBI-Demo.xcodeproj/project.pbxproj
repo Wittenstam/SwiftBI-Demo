@@ -145,8 +145,8 @@
 			children = (
 				154CF21F274ED608000E39B9 /* BarChartDemo.swift */,
 				154CF221274ED6AD000E39B9 /* LineChartDemo.swift */,
-				154CF225274ED6CE000E39B9 /* PieChartDemo.swift */,
 				154CF223274ED6BF000E39B9 /* MultiLineChartDemo.swift */,
+				154CF225274ED6CE000E39B9 /* PieChartDemo.swift */,
 				154CF227274ED6DB000E39B9 /* RadarChartDemo.swift */,
 			);
 			path = Charts;

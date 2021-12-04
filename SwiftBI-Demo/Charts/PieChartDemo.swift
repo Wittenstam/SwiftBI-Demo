@@ -53,6 +53,13 @@ struct PieChartDemo: View {
                     }) {
                         Text("Generate data")
                     }
+                    .buttonStyle(.bordered)
+                    .padding()
+                    .padding(.bottom)
+                    
+                    
+                    Toggle("Show Legends", isOn: $showLegends)
+                    
                 }
                 .frame(width: geometry.size.width)
             }

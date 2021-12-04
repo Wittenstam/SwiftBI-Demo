@@ -26,6 +26,9 @@ struct RadarChartDemo: View {
      ]
     @State var maxValue: Double = 0
     @State var divisions: Int = 10
+    
+    @State var sliderDivisions: Double = 10
+    @State var sliderMaxValue: Double = 0
      
     var body: some View {
         GeometryReader { geometry in
@@ -49,7 +52,7 @@ struct RadarChartDemo: View {
                         
                         var radarChartDataset = [RadarChartData]()
                         for i in 1...Int.random(in: 3..<7) {
-                            let radarData = RadarChartData(label: "random date \(i)", value: Double.random(in: 1..<100))
+                            let radarData = RadarChartData(label: "random date \(i)", value: Double.random(in: 1..<500))
                             radarChartDataset.append(radarData)
                         }
                         self.data = radarChartDataset
@@ -57,6 +60,43 @@ struct RadarChartDemo: View {
                     }) {
                         Text("Generate data")
                     }
+                    .buttonStyle(.bordered)
+                    .padding()
+                    .padding(.bottom)
+                    
+                    Slider(
+                            value: $sliderDivisions,
+                            in: 1...15 ,
+                            step: 1
+                        ) {
+                            Text("Divisions")
+                        } minimumValueLabel: {
+                            Text("1")
+                        } maximumValueLabel: {
+                            Text("20")
+                        }
+                        onEditingChanged: { editing in
+                            divisions = Int(sliderDivisions)
+                        }
+                        Text("\(divisions)")
+                    
+                    Slider(
+                            value: $sliderMaxValue,
+                            in: 0...700,
+                            step: 50
+                        ) {
+                            Text("Max Value")
+                        } minimumValueLabel: {
+                            Text("0")
+                        } maximumValueLabel: {
+                            Text("700")
+                        }
+                        onEditingChanged: { editing in
+                            maxValue = sliderMaxValue
+                        }
+                        Text("\(Int(maxValue))")
+                    
+                    
                 }
                 .frame(width: geometry.size.width)
             }

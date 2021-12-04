@@ -29,6 +29,8 @@ struct BarChartDemo: View {
          BarChartData(label: "November", value: 450.0),
          BarChartData(label: "December", value: 380.0)
      ]
+    
+    @State var sliderMaxValue: Double = 0
      
     var body: some View {
         GeometryReader { geometry in
@@ -52,7 +54,7 @@ struct BarChartDemo: View {
                         
                         var barChartDataset = [BarChartData]()
                         for i in 1...Int.random(in: 5..<20) {
-                            let barData = BarChartData(label: "random date \(i)", value: Double.random(in: 1..<100))
+                            let barData = BarChartData(label: "random date \(i)", value: Double.random(in: 1..<500))
                             barChartDataset.append(barData)
                         }
                         self.data = barChartDataset
@@ -60,6 +62,28 @@ struct BarChartDemo: View {
                     }) {
                         Text("Generate data")
                     }
+                    .buttonStyle(.bordered)
+                    .padding()
+                    .padding(.bottom)
+                    
+                    
+                    
+                    Slider(
+                            value: $sliderMaxValue,
+                            in: 0...700,
+                            step: 50
+                        ) {
+                            Text("Max Value")
+                        } minimumValueLabel: {
+                            Text("0")
+                        } maximumValueLabel: {
+                            Text("700")
+                        }
+                        onEditingChanged: { editing in
+                            maxValue = sliderMaxValue
+                        }
+                        Text("\(Int(maxValue))")
+                    
                 }
                 .frame(width: geometry.size.width)
             }
