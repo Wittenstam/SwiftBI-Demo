@@ -77,13 +77,13 @@ struct MultiLineChartDemo: View {
                          var lineChartDataset3 = [LineChartData]()
                          
                          for i in 1...Int.random(in: 5..<20) {
-                             let lineData1 = LineChartData(label: "random date \(i)", value: Double.random(in: 1..<100))
+                             let lineData1 = LineChartData(label: "random date \(i)", value: Double.random(in: 1..<50))
                              lineChartDataset1.append(lineData1)
                              
-                             let lineData2 = LineChartData(label: "random date \(i)", value: Double.random(in: 1..<100))
+                             let lineData2 = LineChartData(label: "random date \(i)", value: Double.random(in: 1..<50))
                              lineChartDataset2.append(lineData2)
                              
-                             let lineData3 = LineChartData(label: "random date \(i)", value: Double.random(in: 1..<100))
+                             let lineData3 = LineChartData(label: "random date \(i)", value: Double.random(in: 1..<50))
                              lineChartDataset3.append(lineData3)
                          }
 

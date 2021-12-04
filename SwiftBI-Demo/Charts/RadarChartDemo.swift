@@ -78,6 +78,7 @@ struct RadarChartDemo: View {
                         onEditingChanged: { editing in
                             divisions = Int(sliderDivisions)
                         }
+                        .padding()
                         Text("\(divisions)")
                     
                     Slider(
@@ -94,6 +95,7 @@ struct RadarChartDemo: View {
                         onEditingChanged: { editing in
                             maxValue = sliderMaxValue
                         }
+                        .padding()
                         Text("\(Int(maxValue))")
                     
                     

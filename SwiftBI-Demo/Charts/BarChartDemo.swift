@@ -82,6 +82,7 @@ struct BarChartDemo: View {
                         onEditingChanged: { editing in
                             maxValue = sliderMaxValue
                         }
+                        .padding()
                         Text("\(Int(maxValue))")
                     
                 }
