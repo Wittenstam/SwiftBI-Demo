@@ -12,6 +12,7 @@ struct LineChartDemo: View {
     
     @State var title: String = "Monthly Sales"
     @State var legend: String = "Month"
+    @State var showLegends: Bool =  true
     @State var dataUnit: String =  "SEK"
     @State var maxValue: Double = 0
     //@State var data = [LineChartDataLine]()
@@ -38,7 +39,7 @@ struct LineChartDemo: View {
                          Color(UIColor.systemBackground)
                              .cornerRadius(8)
                          VStack (alignment: .center) {
-                             LineChart(title: $title, legend: $legend, dataUnit: $dataUnit, maxValue: $maxValue, data: $data)
+                             LineChart(title: $title, legend: $legend, showLegends: $showLegends, dataUnit: $dataUnit, maxValue: $maxValue,  data: $data)
                                  //.frame(height: 400)
                                  .shadow(color: Color(uiColor: .clear).opacity(0.3), radius: 5, x: 0, y: 0)
                          }

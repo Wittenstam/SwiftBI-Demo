@@ -12,6 +12,7 @@ struct PieChartDemo: View {
     
     @State var title: String = "Monthly Sales"
     @State var dataUnit: String =  "SEK"
+    @State var showLegends: Bool =  true
     @State var data : [PieChartData] = [
         PieChartData(label: "January", value: 150.32),
         PieChartData(label: "February", value: 202.32),
@@ -31,7 +32,7 @@ struct PieChartDemo: View {
                         Color(UIColor.systemBackground)
                             .cornerRadius(8)
                         VStack (alignment: .center) {
-                            PieChart(title: $title, dataUnit: $dataUnit, data: $data)
+                            PieChart(title: $title, dataUnit: $dataUnit, showLegends: $showLegends, data: $data)
                                 //.frame(height: 500)
                                 .shadow(color: Color(uiColor: .clear).opacity(0.3), radius: 5, x: 0, y: 0)
                         }
