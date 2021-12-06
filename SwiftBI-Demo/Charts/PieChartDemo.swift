@@ -31,15 +31,15 @@ struct PieChartDemo: View {
                     ZStack(alignment: .center) {
                         Color(UIColor.systemBackground)
                             .cornerRadius(8)
+                            .shadow(color: Color(uiColor: .label).opacity(0.3), radius: 5, x: 0, y: 0)
                         VStack (alignment: .center) {
                             PieChart(title: $title, dataUnit: $dataUnit, showLegends: $showLegends, data: $data)
                                 //.frame(height: 500)
-                                .shadow(color: Color(uiColor: .clear).opacity(0.3), radius: 5, x: 0, y: 0)
                         }
 
                     }
                     .frame(width: geometry.size.width * 0.8, height: 400)
-                    .shadow(color: Color(uiColor: .label).opacity(0.3), radius: 5, x: 0, y: 0)
+                    
                     
                     Button(action: {
                         
@@ -59,6 +59,8 @@ struct PieChartDemo: View {
                     
                     
                     Toggle("Show Legends", isOn: $showLegends)
+                        .padding(.leading)
+                        .padding(.trailing)
                     
                 }
                 .frame(width: geometry.size.width)

@@ -50,6 +50,9 @@ struct MultiLineChartDemo: View {
              ]
          )
      ]
+    
+    @State var filled: Bool = false
+    @State var curved: Bool = true
       
      var body: some View {
          GeometryReader { geometry in
@@ -59,15 +62,15 @@ struct MultiLineChartDemo: View {
                      ZStack(alignment: .center) {
                          Color(UIColor.systemBackground)
                              .cornerRadius(8)
+                             .shadow(color: Color(uiColor: .label).opacity(0.3), radius: 5, x: 0, y: 0)
                          VStack (alignment: .center) {
                              LineChart(title: $title, legend: $legend, showLegends: $showLegends, dataUnit: $dataUnit, maxValue: $maxValue, data: $data)
                                  //.frame(height: 400)
-                                 .shadow(color: Color(uiColor: .clear).opacity(0.3), radius: 5, x: 0, y: 0)
                          }
 
                      }
                      .frame(width: geometry.size.width * 0.8, height: 400)
-                     .shadow(color: Color(uiColor: .label).opacity(0.3), radius: 5, x: 0, y: 0)
+                     
                      
                      Button(action: {
                          
@@ -87,9 +90,9 @@ struct MultiLineChartDemo: View {
                              lineChartDataset3.append(lineData3)
                          }
 
-                         let LineChartDataLine1 = LineChartDataLine(label: "Random 1", color: Color.red, isFilled: false, isCurved: true, value:lineChartDataset1)
-                         let LineChartDataLine2 = LineChartDataLine(label: "Random 2", color: Color.green, isFilled: false, isCurved: true, value:lineChartDataset2)
-                         let LineChartDataLine3 = LineChartDataLine(label: "Random 3", color: Color.blue, isFilled: false, isCurved: true, value:lineChartDataset3)
+                         let LineChartDataLine1 = LineChartDataLine(label: "Random 1", color: Color.red, isFilled: filled, isCurved: curved, value:lineChartDataset1)
+                         let LineChartDataLine2 = LineChartDataLine(label: "Random 2", color: Color.green, isFilled: filled, isCurved: curved, value:lineChartDataset2)
+                         let LineChartDataLine3 = LineChartDataLine(label: "Random 3", color: Color.blue, isFilled: filled, isCurved: curved, value:lineChartDataset3)
 
                          self.data.append(LineChartDataLine1)
                          self.data.append(LineChartDataLine2)
@@ -104,6 +107,16 @@ struct MultiLineChartDemo: View {
                      
                      
                      Toggle("Show Legends", isOn: $showLegends)
+                         .padding(.leading)
+                         .padding(.trailing)
+                     
+                     Toggle("Filled", isOn: $filled)
+                         .padding(.leading)
+                         .padding(.trailing)
+                     
+                     Toggle("Curved", isOn: $curved)
+                         .padding(.leading)
+                         .padding(.trailing)
                      
                  }
                  .frame(width: geometry.size.width)

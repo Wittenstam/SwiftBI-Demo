@@ -29,6 +29,9 @@ struct LineChartDemo: View {
             ]
         )
     ]
+    
+    @State var filled: Bool = false
+    @State var curved: Bool = true
           
      var body: some View {
          GeometryReader { geometry in
@@ -38,15 +41,14 @@ struct LineChartDemo: View {
                      ZStack(alignment: .center) {
                          Color(UIColor.systemBackground)
                              .cornerRadius(8)
+                             .shadow(color: Color(uiColor: .label).opacity(0.3), radius: 5, x: 0, y: 0)
                          VStack (alignment: .center) {
                              LineChart(title: $title, legend: $legend, showLegends: $showLegends, dataUnit: $dataUnit, maxValue: $maxValue,  data: $data)
                                  //.frame(height: 400)
-                                 .shadow(color: Color(uiColor: .clear).opacity(0.3), radius: 5, x: 0, y: 0)
                          }
-
                      }
                      .frame(width: geometry.size.width * 0.8, height: 400)
-                     .shadow(color: Color(uiColor: .label).opacity(0.3), radius: 5, x: 0, y: 0)
+                     
                  
                      
                      Button(action: {
@@ -59,7 +61,7 @@ struct LineChartDemo: View {
                              lineChartDataset.append(lineData)
                          }
 
-                         let LineChartDataLine = LineChartDataLine(label: "Random", color: Color.pink, isFilled: false, isCurved: true, value:lineChartDataset)
+                         let LineChartDataLine = LineChartDataLine(label: "Random", color: Color.pink, isFilled: filled, isCurved: curved, value:lineChartDataset)
 
                          self.data.append(LineChartDataLine)
 
@@ -72,6 +74,16 @@ struct LineChartDemo: View {
                      
                      
                      Toggle("Show Legends", isOn: $showLegends)
+                         .padding(.leading)
+                         .padding(.trailing)
+                     
+                     Toggle("Filled", isOn: $filled)
+                         .padding(.leading)
+                         .padding(.trailing)
+                     
+                     Toggle("Curved", isOn: $curved)
+                         .padding(.leading)
+                         .padding(.trailing)
                      
                  }
                  .frame(width: geometry.size.width)
