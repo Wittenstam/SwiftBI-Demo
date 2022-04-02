@@ -20,6 +20,7 @@
 		154CF226274ED6CE000E39B9 /* PieChartDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154CF225274ED6CE000E39B9 /* PieChartDemo.swift */; };
 		154CF228274ED6DB000E39B9 /* RadarChartDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154CF227274ED6DB000E39B9 /* RadarChartDemo.swift */; };
 		154CF22C274EDE4D000E39B9 /* SwiftBI in Frameworks */ = {isa = PBXBuildFile; productRef = 154CF22B274EDE4D000E39B9 /* SwiftBI */; };
+		1567366F27EA422600C5F0FF /* ProgressChartDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1567366E27EA422600C5F0FF /* ProgressChartDemo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		154CF223274ED6BF000E39B9 /* MultiLineChartDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineChartDemo.swift; sourceTree = "<group>"; };
 		154CF225274ED6CE000E39B9 /* PieChartDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartDemo.swift; sourceTree = "<group>"; };
 		154CF227274ED6DB000E39B9 /* RadarChartDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarChartDemo.swift; sourceTree = "<group>"; };
+		1567366E27EA422600C5F0FF /* ProgressChartDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressChartDemo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				154CF21F274ED608000E39B9 /* BarChartDemo.swift */,
+				1567366E27EA422600C5F0FF /* ProgressChartDemo.swift */,
 				154CF221274ED6AD000E39B9 /* LineChartDemo.swift */,
 				154CF223274ED6BF000E39B9 /* MultiLineChartDemo.swift */,
 				154CF225274ED6CE000E39B9 /* PieChartDemo.swift */,
@@ -294,6 +297,7 @@
 				154CF228274ED6DB000E39B9 /* RadarChartDemo.swift in Sources */,
 				154CF226274ED6CE000E39B9 /* PieChartDemo.swift in Sources */,
 				154CF1F6274ED21C000E39B9 /* SwiftBI_DemoApp.swift in Sources */,
+				1567366F27EA422600C5F0FF /* ProgressChartDemo.swift in Sources */,
 				154CF224274ED6BF000E39B9 /* MultiLineChartDemo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

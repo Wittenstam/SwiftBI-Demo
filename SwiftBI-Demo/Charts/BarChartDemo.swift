@@ -15,7 +15,7 @@ struct BarChartDemo: View {
     @State var dataUnit: String = "SEK"
     @State var barColor: Color = .blue
     @State var maxValue: Double = 0
-    @State var data  : [BarChartData] = [
+    @State var data : [BarChartData] = [
          BarChartData(label: "January", value: 340.32),
          BarChartData(label: "February", value: 250.0),
          BarChartData(label: "March", value: 430.22),

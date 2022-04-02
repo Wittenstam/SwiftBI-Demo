@@ -18,7 +18,8 @@ struct ContentView: View {
         Chart(chartType: "Line Chart"),
         Chart(chartType: "Multi Line Chart"),
         Chart(chartType: "Pie Chart"),
-        Chart(chartType: "Radar Chart")
+        Chart(chartType: "Radar Chart"),
+        Chart(chartType: "Progress Chart")
     ]
     
 
@@ -42,6 +43,7 @@ struct ContentView: View {
             case "Multi Line Chart" : return AnyView( MultiLineChartDemo() )
             case "Pie Chart" : return AnyView( PieChartDemo() )
             case "Radar Chart" : return AnyView( RadarChartDemo() )
+            case "Progress Chart" : return AnyView( ProgressChartDemo() )
         default: return AnyView(EmptyView())
         }
     }
